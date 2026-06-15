@@ -1,230 +1,145 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pozvánka pre Soňu</title>
-
-<style>
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family: Arial, sans-serif;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pozvánka pre Soňu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        background-image: url('./Kapusany-chateau-2.jpg');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        overflow:auto;
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-image: url('https://id-preview--2494f03c-daa0-49cb-8e91-45af13faf720.lovable.app/__l5e/assets-v1/228137e4-1b43-4257-a6be-20cc844e0666/kapusany.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
-    .container{
-        background:rgba(255,255,255,0.95);
-        padding:60px;
-        border-radius:20px;
-        box-shadow:0 0 20px rgba(0,0,0,0.3);
-        position:relative;
-        z-index:10;
-        max-width:800px;
-        width:90%;
-        margin:50px auto;
-        display:flex;
-        gap:30px;
-        align-items:flex-start;
+    .card {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      padding: 40px;
+      width: 100%;
+      max-width: 768px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .left-content{
-        flex:1;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+    .card img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
     }
 
-    .left-content img{
-        max-width:100%;
-        height:auto;
-        border-radius:10px;
-        max-height:400px;
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .right-content{
-        flex:1;
-        text-align:center;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #db2777;
     }
 
-    h1{
-        margin-bottom:20px;
-        color:#333;
-        font-size:2rem;
+    p {
+      font-size: 20px;
+      margin-bottom: 32px;
+      color: #1f2937;
     }
 
-    p{
-        font-size:1.2rem;
-        margin-bottom:30px;
-        color:#555;
+    .btn-area {
+      position: relative;
+      height: 64px;
+      width: 100%;
     }
 
-    .meme-container{
-        margin:30px 0;
-        display:flex;
-        justify-content:center;
-        align-items:center;
+    button {
+      position: absolute;
+      padding: 12px 32px;
+      border-radius: 9999px;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
 
-    .meme-container img{
-        max-width:100%;
-        height:auto;
-        border-radius:10px;
-        max-height:300px;
+    .btn-yes {
+      left: 50%;
+      transform: translateX(-110%);
+      background: #22c55e;
     }
 
-    .buttons-container {
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:20px;
-        position:relative;
-        min-height:50px;
-        margin-top:30px;
+    .btn-yes:hover {
+      background: #16a34a;
     }
 
-    button{
-        padding:12px 25px;
-        font-size:18px;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
+    .btn-no {
+      background: #ef4444;
     }
 
-    #yesBtn{
-        background:#4CAF50;
-        color:white;
-        position:relative;
-        z-index:5;
+    .btn-no:hover {
+      background: #dc2626;
     }
 
-    #noBtn{
-        background:#ff4d4d;
-        color:white;
-        position:fixed;
-        transition: all 0.2s ease-out;
+    @media (min-width: 768px) {
+      .card {
+        flex-direction: row;
+        gap: 40px;
+      }
     }
-
-    #message{
-        margin-top:20px;
-        font-size:1.3rem;
-        color:#4CAF50;
-        font-weight:bold;
-    }
-
-    @media (max-width: 768px) {
-        .container {
-            flex-direction:column;
-            gap:20px;
-        }
-
-        .left-content, .right-content {
-            flex:1;
-        }
-    }
-</style>
+  </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="left-content">
-        <!-- Add your picture here -->
+  <div class="card">
+    <img
+      src="https://id-preview--2494f03c-daa0-49cb-8e91-45af13faf720.lovable.app/__l5e/assets-v1/862cd7fa-c892-41d7-a2ce-7dcbbf6b17a1/homer.png"
+      alt="Homer"
+    />
+    <div class="content">
+      <h1>❤️ Ahoj Soňa ❤️</h1>
+      <p>Pôjdeš so mnou na Kapušiansky hrad? 🏰</p>
+      <div class="btn-area">
+        <button class="btn-yes" onclick="alert('Hurááá! 🎉❤️')">Áno</button>
+        <button class="btn-no" id="btnNo">Nie</button>
+      </div>
     </div>
+  </div>
 
-    <div class="right-content">
-        <h1>❤️ Ahoj Soňa ❤️</h1>
-        <p>Pôjdeš so mnou na Kapušiansky hrad? 🏰</p>
+  <script>
+    const btnNo = document.getElementById('btnNo');
 
-        <div class="meme-container">
-            <!-- Add your meme here -->
-        </div>
+    function dodgeNo() {
+      const top = Math.random() * 80;
+      const left = Math.random() * 80;
+      btnNo.style.top = top + '%';
+      btnNo.style.left = left + '%';
+    }
 
-        <div class="buttons-container">
-            <button id="yesBtn">Áno</button>
-            <button id="noBtn">Nie</button>
-        </div>
-    </div>
-</div>
-
-<div id="message"></div>
-
-<script>
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-let mouseX = 0;
-let mouseY = 0;
-
-// Track mouse position
-document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function moveButtonAwayFromMouse() {
-    const noBtnRect = noBtn.getBoundingClientRect();
-    const btnCenterX = noBtnRect.left + noBtnRect.width / 2;
-    const btnCenterY = noBtnRect.top + noBtnRect.height / 2;
-    
-    // Calculate direction away from mouse
-    const dx = btnCenterX - mouseX;
-    const dy = btnCenterY - mouseY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    
-    // Avoid division by zero
-    if (distance === 0) return;
-    
-    // Normalize and scale the direction
-    const moveDistance = 100;
-    const moveX = (dx / distance) * moveDistance;
-    const moveY = (dy / distance) * moveDistance;
-    
-    // Calculate new position
-    let newX = noBtnRect.left + moveX;
-    let newY = noBtnRect.top + moveY;
-    
-    // Keep button within window bounds with padding
-    const padding = 10;
-    newX = Math.max(padding, Math.min(newX, window.innerWidth - noBtnRect.width - padding));
-    newY = Math.max(padding, Math.min(newY, window.innerHeight - noBtnRect.height - padding));
-    
-    noBtn.style.left = newX + "px";
-    noBtn.style.top = newY + "px";
-}
-
-noBtn.addEventListener("mouseover", moveButtonAwayFromMouse);
-noBtn.addEventListener("click", moveButtonAwayFromMouse);
-
-// Position the "Nie" button to the right of the "Áno" button on load
-window.addEventListener("load", () => {
-    const yesBtnRect = yesBtn.getBoundingClientRect();
-    
-    noBtn.style.left = (yesBtnRect.right + 10) + "px";
-    noBtn.style.top = yesBtnRect.top + "px";
-});
-
-yesBtn.addEventListener("click", () => {
-    const rightContent = document.querySelector(".right-content");
-    rightContent.innerHTML = `
-        <h1>🥰 Super, Soňa!</h1>
-        <p>Teším sa na spoločný výlet na Kapušiansky hrad. ❤️🏰</p>
-    `;
-});
-</script>
-
+    btnNo.addEventListener('mouseenter', dodgeNo);
+    btnNo.addEventListener('click', dodgeNo);
+  </script>
 </body>
 </html>
