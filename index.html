@@ -31,6 +31,8 @@
         border-radius:20px;
         text-align:center;
         box-shadow:0 0 20px rgba(0,0,0,0.3);
+        position:relative;
+        z-index:10;
     }
 
     h1{
@@ -63,6 +65,8 @@
     #yesBtn{
         background:#4CAF50;
         color:white;
+        position:relative;
+        z-index:5;
     }
 
     #noBtn{
@@ -143,10 +147,9 @@ noBtn.addEventListener("click", moveButtonAwayFromMouse);
 // Position the "Nie" button to the right of the "Áno" button on load
 window.addEventListener("load", () => {
     const yesBtnRect = yesBtn.getBoundingClientRect();
-    const containerRect = document.querySelector(".buttons-container").getBoundingClientRect();
     
-    noBtn.style.left = (yesBtnRect.right - containerRect.left + 10) + "px";
-    noBtn.style.top = (yesBtnRect.top - containerRect.top) + "px";
+    noBtn.style.left = (yesBtnRect.right + 10) + "px";
+    noBtn.style.top = yesBtnRect.top + "px";
 });
 
 yesBtn.addEventListener("click", () => {
