@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pozvánka pre Soňu</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%), url('Kapusany-chateau-2.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        overflow:hidden;
+    }
+
+    .container{
+        background:rgba(255,255,255,0.95);
+        padding:40px;
+        border-radius:20px;
+        text-align:center;
+        box-shadow:0 0 20px rgba(0,0,0,0.3);
+    }
+
+    h1{
+        margin-bottom:20px;
+        color:#333;
+    }
+
+    p{
+        font-size:1.2rem;
+        margin-bottom:30px;
+    }
+
+    .buttons-container {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:20px;
+        position:relative;
+        min-height:50px;
+    }
+
+    button{
+        padding:12px 25px;
+        font-size:18px;
+        border:none;
+        border-radius:10px;
+        cursor:pointer;
+    }
+
+    #yesBtn{
+        background:#4CAF50;
+        color:white;
+    }
+
+    #noBtn{
+        background:#ff4d4d;
+        color:white;
+        position:absolute;
+    }
+
+    #message{
+        margin-top:20px;
+        font-size:1.3rem;
+        color:#4CAF50;
+        font-weight:bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>❤️ Ahoj Soňa ❤️</h1>
+    <p>Pôjdeš so mnou na Kapušiansky hrad? 🏰</p>
+
+    <div class="buttons-container">
+        <button id="yesBtn">Áno</button>
+        <button id="noBtn">Nie</button>
+    </div>
+</div>
+
+<div id="message"></div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+function moveButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+// Position the "Nie" button to the right of the "Áno" button on load
+window.addEventListener("load", () => {
+    const yesBtnRect = yesBtn.getBoundingClientRect();
+    const containerRect = document.querySelector(".buttons-container").getBoundingClientRect();
+    
+    noBtn.style.left = (yesBtnRect.right - containerRect.left + 10) + "px";
+    noBtn.style.top = (yesBtnRect.top - containerRect.top) + "px";
+});
+
+yesBtn.addEventListener("click", () => {
+    document.querySelector(".container").innerHTML = `
+        <h1>🥰 Super, Soňa!</h1>
+        <p>Teším sa na spoločný výlet na Kapušiansky hrad. ❤️🏰</p>
+    `;
+});
+</script>
+
+</body>
+</html>
