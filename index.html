@@ -116,8 +116,11 @@ function moveButtonAwayFromMouse() {
     const dy = btnCenterY - mouseY;
     const distance = Math.sqrt(dx * dx + dy * dy);
     
+    // Avoid division by zero
+    if (distance === 0) return;
+    
     // Normalize and scale the direction
-    const moveDistance = 150;
+    const moveDistance = 100;
     const moveX = (dx / distance) * moveDistance;
     const moveY = (dy / distance) * moveDistance;
     
@@ -125,9 +128,10 @@ function moveButtonAwayFromMouse() {
     let newX = noBtnRect.left + moveX;
     let newY = noBtnRect.top + moveY;
     
-    // Keep button within window bounds
-    newX = Math.max(0, Math.min(newX, window.innerWidth - noBtnRect.width));
-    newY = Math.max(0, Math.min(newY, window.innerHeight - noBtnRect.height));
+    // Keep button within window bounds with padding
+    const padding = 10;
+    newX = Math.max(padding, Math.min(newX, window.innerWidth - noBtnRect.width - padding));
+    newY = Math.max(padding, Math.min(newY, window.innerHeight - noBtnRect.height - padding));
     
     noBtn.style.left = newX + "px";
     noBtn.style.top = newY + "px";
