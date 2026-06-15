@@ -29,13 +29,37 @@
         background:rgba(255,255,255,0.95);
         padding:60px;
         border-radius:20px;
-        text-align:center;
         box-shadow:0 0 20px rgba(0,0,0,0.3);
         position:relative;
         z-index:10;
-        max-width:600px;
+        max-width:800px;
         width:90%;
         margin:50px auto;
+        display:flex;
+        gap:30px;
+        align-items:flex-start;
+    }
+
+    .left-content{
+        flex:1;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    .left-content img{
+        max-width:100%;
+        height:auto;
+        border-radius:10px;
+        max-height:400px;
+    }
+
+    .right-content{
+        flex:1;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
     }
 
     h1{
@@ -102,21 +126,38 @@
         color:#4CAF50;
         font-weight:bold;
     }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction:column;
+            gap:20px;
+        }
+
+        .left-content, .right-content {
+            flex:1;
+        }
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>❤️ Ahoj Soňa ❤️</h1>
-    <p>Pôjdeš so mnou na Kapušiansky hrad? 🏰</p>
-
-    <div class="meme-container">
-        <!-- Add your meme here -->
+    <div class="left-content">
+        <!-- Add your picture here -->
     </div>
 
-    <div class="buttons-container">
-        <button id="yesBtn">Áno</button>
-        <button id="noBtn">Nie</button>
+    <div class="right-content">
+        <h1>❤️ Ahoj Soňa ❤️</h1>
+        <p>Pôjdeš so mnou na Kapušiansky hrad? 🏰</p>
+
+        <div class="meme-container">
+            <!-- Add your meme here -->
+        </div>
+
+        <div class="buttons-container">
+            <button id="yesBtn">Áno</button>
+            <button id="noBtn">Nie</button>
+        </div>
     </div>
 </div>
 
@@ -177,7 +218,8 @@ window.addEventListener("load", () => {
 });
 
 yesBtn.addEventListener("click", () => {
-    document.querySelector(".container").innerHTML = `
+    const rightContent = document.querySelector(".right-content");
+    rightContent.innerHTML = `
         <h1>🥰 Super, Soňa!</h1>
         <p>Teším sa na spoločný výlet na Kapušiansky hrad. ❤️🏰</p>
     `;
